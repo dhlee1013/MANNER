@@ -28,7 +28,7 @@ def Detect_Genes(adata, nper = 1000, quantile = 0.95, permutated="gene", thresho
     ################################################################################
     ## March 2025 addition to remove extreme outliers from linear regression for rho
     ## We mask out top 1% outliers ONLY for RHO ESTIMATION
-    ## We still estimate dropout rates for all genes, without masking!!!
+    ## We still estimate dropout rates for all genes, without masking
     # Compute threshold to remove top 1% outliers
     threshold = np.percentile(ys, threshold_value*100)
 
