@@ -17,9 +17,12 @@ conda activate MANNER
 
 ### External Dependencies (Histosweep and iStar)
 MANNER relies on two external tools for histology image processing and feature extraction:
-- [Histosweep](https://github.com/amesch441-o1/HistoSweep) to create tissue masks. Please follow the installation instructions in the HistoSweep repository.
-  
-- [iStar](https://github.com/daviddaiweizhang/istar/tree/master) to process and perform [HIPT](https://github.com/mahmoodlab/HIPT)-based image feature extraction.
+
+#### Histosweep
+
+[Histosweep](https://github.com/amesch441-o1/HistoSweep) to create tissue masks. Please follow the installation instructions in the HistoSweep repository.
+
+#### iStar
 
 Morphological feature extraction is performed via [iStar](https://github.com/daviddaiweizhang/istar/tree/master), which implements [HIPT](https://github.com/mahmoodlab/HIPT)-based patch-level image embeddings. iStar should be installed as a **separate conda environment** from MANNER.
 
