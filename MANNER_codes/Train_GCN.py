@@ -23,14 +23,11 @@ from scipy.sparse import issparse, vstack, csr_matrix
 from scipy.sparse import coo_matrix
 ##For scaling gene expression for heatmaps
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.metrics.pairwise import cosine_similarity # To calculate edge weights of Adj Matrix
-import matplotlib.patches as mpatches  # Import mpatches for creating legend entries
+from sklearn.metrics.pairwise import cosine_similarity 
+import matplotlib.patches as mpatches  
 
 ##for plotting clusters (Sicong codes)
 import matplotlib.lines as mlines
-
-## simulate gene expression from NegBin (not Normal, since gene exp counts cant be negative)
-from scipy.stats import nbinom
 
 ##read in hipt output
 import pickle
@@ -48,10 +45,8 @@ from torch_geometric.data import Data, Batch, DataLoader
 import torch.optim as optim
 import scanpy as sc
 
-## to measure time it took for each step
 import time
 
-##progress bar
 from tqdm import tqdm
 
 ########################################################################
@@ -71,7 +66,6 @@ def create_gcn_input(gcn_preprocess_dir, gcn_filename, edge_index_filename, n_ge
     - n_gene_PC (int): Number of PCs or GLM-PCs to extract as features.
     - HVG (int or None): If provided, select this many highly variable genes before PCA.
     - apply_log1p (bool): Whether to apply log1p transformation before PCA (ignored if glm_pca=True).
-    - glm_pca (bool): Whether to perform GLM-PCA (via scvi-tools) instead of PCA.
 
     Returns:
     - data (torch_geometric.data.Data): PyG Data object with node features and edges.
@@ -110,7 +104,7 @@ def create_gcn_input(gcn_preprocess_dir, gcn_filename, edge_index_filename, n_ge
     print("✅ GCN input X shape:", X.shape)
 
 
-    # Step 2: load concatenated (coordinate KNN + HIPT KNN) edge index PyTorch Tensor file (from .pt file)
+    # Step 2: load HIPT KNN edge index PyTorch Tensor file (from .pt file)
     ##load pytorch tensor file as "edge_index"
     edge_index = torch.load(gcn_preprocess_dir + edge_index_filename)
 
