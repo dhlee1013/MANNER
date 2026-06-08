@@ -15,12 +15,12 @@ conda activate MANNER
 
 > GPU acceleration is strongly recommended. CUDA 11.3 and a compatible NVIDIA driver (≥ 450.80) are required.
 
-### External Dependencies (Histosweep and iStar)
+### External Dependencies (HistoSweep and iStar)
 MANNER relies on two external tools for histology image processing and feature extraction:
 
-#### Histosweep
+#### HistoSweep
 
-[Histosweep](https://github.com/amesch441-o1/HistoSweep) to create tissue masks. Please follow the installation instructions in the HistoSweep repository.
+MANNER uses [HistoSweep](https://github.com/amesch441-o1/HistoSweep) to create tissue masks. Please follow the installation instructions in the HistoSweep repository.
 
 #### iStar
 
