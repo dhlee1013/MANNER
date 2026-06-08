@@ -13,7 +13,8 @@ conda env create -f MANNER_environment.yaml
 conda activate MANNER
 ```
 
-> GPU acceleration is strongly recommended. CUDA 11.3 and a compatible NVIDIA driver (≥ 450.80) are required. For a complete list of dependencies, see MANNER_environment_full.yml.
+> GPU acceleration is strongly recommended. CUDA 11.3 and a compatible NVIDIA driver (≥ 450.80) are required. `MANNER_environment.yaml` lists the major dependencies only. For a complete list of all resolved dependencies, see [`MANNER_environment_full.yml`](MANNER_codes/MANNER_environment_full.yml).
+
 
 ### External Dependencies (HistoSweep and iStar)
 MANNER relies on two external tools for histology image processing and feature extraction:
@@ -26,7 +27,7 @@ MANNER uses [HistoSweep](https://github.com/amesch441-o1/HistoSweep) to create t
 
 Morphological feature extraction is performed via [iStar](https://github.com/daviddaiweizhang/istar/tree/master), which implements [HIPT](https://github.com/mahmoodlab/HIPT)-based patch-level image embeddings. iStar should be installed as a **separate conda environment** from MANNER.
 
-> **Note:** MANNER relies on slightly modified versions of iStar's `rescale.py` and `utils.py`. These are provided under the `istar_mod/` folder in this repository and should be used in place of the originals.
+> **Note:** MANNER relies on slightly modified versions of iStar's `rescale.py` and `utils.py`, provided as [`rescale_modified.py`](istar_mod/rescale_modified.py) and [`utils_modified.py`](istar_mod/utils_modified.py) under `istar_mod/`.
 
 ---
 ## Tutorial
@@ -42,13 +43,13 @@ The preprocessing pipeline:
 2. Extracts patch-level morphological features for each spatial bin using iStar/HIPT
 3. Constructs a binary adjacency matrix from morphological features for use as GCN input
 
-A fully annotated preprocessing script is provided at: visHD_CRC_P2_input_preprocessing.py
+A fully annotated preprocessing script is provided at: [`visHD_CRC_P2_input_preprocessing.py`](visHD_CRC_P2_input_preprocessing.py)
 
 ### Step 2 — GCN Training and Embedding Extraction
 
 Using the preprocessed data as input, a Graph Convolutional Network (GCN) is trained and a 64-dimensional spatial embedding is extracted per bin.
 
-A fully annotated training script is provided at: visHD_CRC_P2_GCN_training.py
+A fully annotated training script is provided at: [`visHD_CRC_P2_GCN_training.py`](visHD_CRC_P2_GCN_training.py)
 
 ### Step 3 — MANNER Denoising
 
