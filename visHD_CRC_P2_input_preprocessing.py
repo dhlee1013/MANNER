@@ -1,23 +1,6 @@
 '''
 ## This .py file is for creating input data for the GCN training using Visium HD Colorectal Cancer Patient 2 dataset
-
-## Code based on Sicong's .btf image processing codes
-Codes imported from format_visiumHD_data.py and my_utils.py
-
 ## Process visiumHD image file for HIPT image embedding extraction for GCN
-
-From he-raw, we go thru the following istar processing steps:
-rescale.py -> preprocess.py -> extract_features.py
-
-The result of HIPT extraction gives us pickle file with (n_features x 784 x 848).
-To match the x and y coordinate range of (784,848), we have to transform gene expression data pixel coordinates by:
-
-pixel_coord x (1/16) x (pixel-size-raw/0.5)
-
-Since we rescaled pixel size to be 0.5 during "rescale.py".
-
-For HIPT embedding, the data structure is (embedding, Y coord, X coord), so make sure to align with gene expression data
-
 '''
 
 
@@ -154,13 +137,13 @@ adata2.obsm['spatial'][:, 1] = adata2.obsm['spatial'][:, 1] - yl
 he_cut = he[yl:yr, xl:xr, :]
 
 ## save the filtered H&E image based on gene expression
-## This he-raw.jpg is used for Histosweep to create tissue mask
+## This he-raw.jpg is used for HistoSweep to create tissue mask
 Image.fromarray(he_cut, 'RGB').save(out_dir+'he-raw.jpg')
 
 #######################################################
-## Use Histosweep to create a mask 
+## Use HistoSweep to create a mask 
 #######################################################
-## import Histosweep files and functions
+## import HistoSweep files and functions
 import utils as hs_utils
 from saveParameters   import saveParams
 from computeMetrics   import compute_metrics
@@ -261,13 +244,10 @@ with open(out_dir+"pixel-size.txt", 'w') as file:
     file.write(str(0.5))
 
 #######################################################
-## Run various HIPT functions included in Zhang et al.'s iStar (https://github.com/daviddaiweizhang/istar)
-##How to run shell command from within ipython
+## Run functions included in Zhang et al.'s iStar (https://github.com/daviddaiweizhang/istar)
 ##Run istar's rescale.py from ipython: input is image file "he-raw.jpg" and pixel-size-raw.txt, pixel-size.txt, output is "he-scaled.jpg"
-##Need to load py39istar conda env and then run istar/rescale.py
 
-# Command to activate the py39istar environment and run the script
-# Define the prefix and the command
+## rescale the image file
 prefix = "/path/to/MANNER/visHD_CRC_P2/img_processed/square_008um/"
 command = f"""
 source ~/miniconda3/etc/profile.d/conda.sh && \
@@ -278,8 +258,7 @@ python /path/to/istar/rescale_modified.py {prefix} --image
 # Execute the command
 subprocess.run(command, shell=True, executable="/bin/bash")
 
-# Command to activate the py39istar environment and run the script
-# Define the prefix and the command
+## rescale the spatial bin coordinates
 prefix = "/path/to/MANNER/visHD_CRC_P2/img_processed/square_008um/"
 command = f"""
 source ~/miniconda3/etc/profile.d/conda.sh && \
