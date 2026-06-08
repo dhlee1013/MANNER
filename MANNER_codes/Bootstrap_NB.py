@@ -1,8 +1,6 @@
 
 from Get_Disp import *
 from Decoder_NBC import *
-# from PE_NODE_Embedding import *
-# from sklearn.decomposition import PCA
 from datetime import timedelta
 import scanpy as sc
 import os
