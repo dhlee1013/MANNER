@@ -26,7 +26,6 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics.pairwise import cosine_similarity 
 import matplotlib.patches as mpatches  
 
-##for plotting clusters (Sicong codes)
 import matplotlib.lines as mlines
 
 ##read in hipt output
