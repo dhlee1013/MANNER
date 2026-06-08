@@ -14,7 +14,6 @@ import scanpy as sc
 
 from Get_Disp import *
 from Decoder_NBC import *
-# from PE_NODE_Embedding import *
 from Bootstrap_NB import *
 from sklearn.decomposition import PCA
 from pytorch_lightning.utilities import rank_zero_only
@@ -27,10 +26,7 @@ import anndata as ad
 # default is full float32, the slowest, with max numerical accuracy
 # high is mixed float32 and float16, faster, but less precise that default
 # medium is mixed float32 and float16, the fastest, with least precision
-torch.set_float32_matmul_precision('high')  # or 'medium'
-
-
-##when running in 2+ gpu, need this so that only the first GPU (rank 0 gpu) writes the output files
+torch.set_float32_matmul_precision('high') 
 
 @rank_zero_only
 def save_adata(adata2, output_path, output_filename):
