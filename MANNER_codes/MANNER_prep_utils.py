@@ -30,13 +30,10 @@ from scipy.sparse import coo_matrix
 from sklearn.preprocessing import MinMaxScaler
 import matplotlib.patches as mpatches  # Import mpatches for creating legend entries
 
-##for plotting clusters (Sicong codes)
 import matplotlib.lines as mlines
 
-## simulate gene expression from NegBin (not Normal, since gene exp counts cant be negative)
 from scipy.stats import nbinom
 
-##read in hipt output
 import pickle
 
 ##for GCN
@@ -109,10 +106,6 @@ def create_GCN_random_batch(adata, hipt_data, batch_outdir, output_header, n_XY_
     else:
         adata.X = adata.X.astype(np.float32)
 
-    ## Preprocess adata : Remove bottom 25% in terms of mean expression
-    ##MANNER's drop-out rate estimation step requires raw data, not log1p transformed data
-    ##which violates NegBin assumption
-    # Apply log(x + 1) transformation using sc.pp.log1p
     if apply_log1p:
         print("Applying log(x + 1) transformation to adata.X...")
         sc.pp.log1p(adata)
