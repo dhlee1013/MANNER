@@ -18,23 +18,14 @@ from scipy.sparse import issparse, vstack, csr_matrix
 from scipy.sparse import coo_matrix
 ##For scaling gene expression for heatmaps
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.metrics.pairwise import cosine_similarity # To calculate edge weights of Adj Matrix
 from sklearn.cluster import KMeans
 import matplotlib.patches as mpatches  # Import mpatches for creating legend entries
-
-##for plotting clusters (Sicong codes)
 import matplotlib.lines as mlines
 
-##read in hipt output
 import pickle
 import os
 
-## to measure time it took for each step
 import time
-
-## hnswlib module for fast KNN identification for graph building
-#!pip install hnswlib
-# import hnswlib
 
 import matplotlib.gridspec as gridspec
 #################################################################################
