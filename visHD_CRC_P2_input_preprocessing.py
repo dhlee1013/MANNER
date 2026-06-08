@@ -43,13 +43,8 @@ from scipy.sparse import issparse, vstack, csr_matrix
 from scipy.sparse import coo_matrix
 ##For scaling gene expression for heatmaps
 from sklearn.preprocessing import MinMaxScaler
-import matplotlib.patches as mpatches  # Import mpatches for creating legend entries
-
-##for plotting clusters (Sicong codes)
+import matplotlib.patches as mpatches 
 import matplotlib.lines as mlines
-
-## simulate gene expression from NegBin (not Normal, since gene exp counts cant be negative)
-from scipy.stats import nbinom
 
 ##read in hipt output
 import pickle
