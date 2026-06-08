@@ -13,7 +13,7 @@ conda env create -f MANNER_environment.yaml
 conda activate MANNER
 ```
 
-> GPU acceleration is strongly recommended. CUDA 11.3 and a compatible NVIDIA driver (≥ 450.80) are required.
+> GPU acceleration is strongly recommended. CUDA 11.3 and a compatible NVIDIA driver (≥ 450.80) are required. For a complete list of dependencies, see MANNER_environment_full.yml.
 
 ### External Dependencies (HistoSweep and iStar)
 MANNER relies on two external tools for histology image processing and feature extraction:
